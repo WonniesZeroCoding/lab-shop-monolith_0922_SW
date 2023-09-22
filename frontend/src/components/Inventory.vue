@@ -61,16 +61,10 @@
                 v-if="!editMode"
                 color="primary"
                 text
-                @click="openDecreaseStock"
+                @click="decreaseStock"
             >
                 DecreaseStock
             </v-btn>
-            <v-dialog v-model="decreaseStockDiagram" width="500">
-                <DecreaseStockCommand
-                    @closeDialog="closeDecreaseStock"
-                    @decreaseStock="decreaseStock"
-                ></DecreaseStockCommand>
-            </v-dialog>
         </v-card-actions>
 
         <v-snackbar
@@ -93,7 +87,7 @@
 
 
     export default {
-        name: 'InventoryInventory',
+        name: 'Inventory',
         components:{
         },
         props: {
@@ -108,7 +102,6 @@
                 timeout: 5000,
                 text: '',
             },
-            decreaseStockDiagram: false,
         }),
 	async created() {
         },
@@ -206,17 +199,16 @@
             change(){
                 this.$emit('input', this.value);
             },
-            async decreaseStock(params) {
+            async decreaseStock() {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links['d'].href), params)
+                        var temp = await axios.put(axios.fixUrl(this.value._links['decreasestock'].href))
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }
                     }
 
                     this.editMode = false;
-                    this.closeDecreaseStock();
                 } catch(e) {
                     this.snackbar.status = true
                     if(e.response && e.response.data.message) {
@@ -225,12 +217,6 @@
                         this.snackbar.text = e
                     }
                 }
-            },
-            openDecreaseStock() {
-                this.decreaseStockDiagram = true;
-            },
-            closeDecreaseStock() {
-                this.decreaseStockDiagram = false;
             },
         },
     }

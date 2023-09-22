@@ -34,7 +34,7 @@
     const axios = require('axios').default;
 
     export default {
-        name: 'InventoryInventoryPicker',
+        name: 'InventoryPicker',
         props: {
             value: [String, Object, Array, Number, Boolean],
         },

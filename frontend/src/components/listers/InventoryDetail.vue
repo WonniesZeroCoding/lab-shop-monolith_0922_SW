@@ -54,7 +54,7 @@
     const axios = require('axios').default;
 
     export default {
-        name: 'InventoryInventoryDetail',
+        name: 'InventoryDetail',
         components:{},
         props: {
         },

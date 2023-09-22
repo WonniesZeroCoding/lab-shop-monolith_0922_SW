@@ -27,7 +27,7 @@
                         hide-overlay
                         transition="dialog-bottom-transition"
                 >
-                    <InventoryInventory :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
+                    <Inventory :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
                             @add="append" v-if="tick"/>
 
                     <v-btn
@@ -74,7 +74,7 @@
             </div>
         </v-col>
         <v-row>
-            <InventoryInventory :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
+            <Inventory :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
         </v-row>
     </div>
 </template>
@@ -82,12 +82,12 @@
 <script>
 
     const axios = require('axios').default;
-    import InventoryInventory from './../InventoryInventory.vue';
+    import Inventory from './../Inventory.vue';
 
     export default {
-        name: 'InventoryInventoryManager',
+        name: 'InventoryManager',
         components: {
-            InventoryInventory,
+            Inventory,
         },
         props: {
             offline: Boolean

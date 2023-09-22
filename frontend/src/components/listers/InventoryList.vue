@@ -66,7 +66,7 @@
                         transition="dialog-bottom-transition"
                 >
 
-                    <InventoryInventory :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
+                    <Inventory :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
                 
                     <v-btn
                             style="postition:absolute; top:2%; right:2%"
@@ -85,12 +85,12 @@
 
 <script>
     const axios = require('axios').default;
-    import InventoryInventory from './../InventoryInventory.vue';
+    import Inventory from './../Inventory.vue';
 
     export default {
-        name: 'InventoryInventoryManager',
+        name: 'InventoryManager',
         components: {
-            InventoryInventory,
+            Inventory,
         },
         props: {
             offline: Boolean,

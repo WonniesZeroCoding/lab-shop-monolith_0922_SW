@@ -6,7 +6,4 @@ import javax.persistence.*;
 import lombok.Data;
 
 @Data
-public class DecreaseStockCommand {
-
-    private Integer qty;
-}
+public class DecreaseStockCommand {}
